@@ -121,7 +121,6 @@ section {
 }
 
 .tools {
-  background-color: #efefef;
   & ul {
     margin: 0;
     & li {
@@ -139,10 +138,15 @@ section {
 }
 
 .benefits {
+  background-color: #efefef;
   & ol li {
     padding: 16px 0;
-    font-size: large;
+    font-size: x-large;
     font-weight: 600;
+    & p {
+      font-size: large;
+      font-weight: 400;
+    } 
   }
     & img {
     border-radius: 8px;
@@ -189,4 +193,15 @@ li b {
   font-weight: 600;
   display: inline-block;
   margin-right: 8px;
+}
+
+.copyright {
+  background-color: #333333;
+  text-align: center;
+  height: 40px;
+  color: #fff;
+  padding: 4px;
+  align-content: center;
+  justify-content: center;
+  display: grid;
 }
