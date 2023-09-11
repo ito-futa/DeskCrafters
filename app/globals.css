@@ -1,14 +1,18 @@
+@import 'normalize.css';
+/* フォントのインポート */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 /* ベースのスタイル */
 :root {
   /* ナチュラルなテーマカラー */
   --primary-color: #5D4037; /* プライマリーカラー（例：ダークブラウン） */
   --secondary-color: #8D6E63; /* セカンダリーカラー（例：ミディアムブラウン） */
-  --background-color: #D7CCC8; /* 背景色（例：ライトブラウン） */
+  --background-color: #FFF; 
   --text-color: #333333; /* テキストカラー（例：ダークグレー） */
   --accent-color: #FFC107; /* アクセントカラー（例：ゴールド） */
   
   /* フォント */
-  --primary-font: "Helvetica, Arial, sans-serif";
+  --primary-font: "Noto Sans JP", sans-serif;
 }
 
 /* 背景色とテキストカラーの適用 */
@@ -18,16 +22,24 @@ body {
   font-family: var(--primary-font);
   scroll-behavior: smooth;
   margin: 0;
+  padding:0;
+  width: inherit;
 }
 
 /* プライマリーカラーの適用例 */
 h1, h2 {
   color: var(--text-color);
+  font-size: xx-large;
 }
 
 /* セカンダリーカラーの適用例 */
 h3, h4 {
   color: var(--secondary-color);
+}
+
+img {
+  display: block;
+  margin-bottom: 32px;
 }
 
 /* アクセントカラーの適用例 */
@@ -45,30 +57,136 @@ button, input[type="submit"] {
 }
 
 section {
-  padding: 96px;
+  padding: 48px 240px;
+  & h2:first-letter {
+  font-size: 2em;
+  color: #ff8808;
+}
+  & h2 {
+    position: relative;
+    padding: 0.25em 0;
+  }
+  & h2:after {
+    content: "";
+    display: block;
+    height: 4px;
+    background: -webkit-linear-gradient(to right, rgb(255, 186, 115), #ffb2b2);
+    background: linear-gradient(to right, rgb(255, 186, 115), #ffb2b2);
+  }
 }
 
-.introduction {
+.mainVisualWrapper {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
 
+.copyContainer {
+  position: absolute;
+  left: 80px;
+  bottom: 80px;
+
+  & h1,p {
+    margin: 8px;
+    color: #fff;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+    font-size: 50px;
+    }
+}
+
+.copyContainer p {
+  font-size: large;
+}
+
+.imageWrapper {
+    & img {
+        filter: brightness(50%);
+        width: 100%;
+    }
+}
+
+
+.introduction {
+  margin-top: 96px;
 }
 
 .background {
-
+  background-color: #efefef;
 }
 
 .items {
-
+    & img {
+    border-radius: 8px;
+  }
 }
 
 .tools {
+  background-color: #efefef;
+  & ul {
+    margin: 0;
+    & li {
+      padding-bottom: 16px;
+      font-weight: 600;
+    }
+  }
+  & img {
+    border-radius: 8px;
+  }
+}
 
+.flex {
+  display: flex;
 }
 
 .benefits {
-  background: #db5331;
-  color: #fff;
+  & ol li {
+    padding: 16px 0;
+    font-size: large;
+    font-weight: 600;
+  }
+    & img {
+    border-radius: 8px;
+  }
 }
 
 .conclusion {
+  background-color: #efefef;
+    & img {
+    border-radius: 4px;
+  }
+}
 
+  .flexbox img {
+    display: inline-block;
+    margin: 8px;
+  }
+
+ul li {
+  font-size: large;
+}
+
+li::before {
+    content: "●";
+    padding: 0.1em 0.4em 0;
+    margin-left: -1.4em;
+    line-height: 1;
+    font-size: 1.3em;
+    color: #ff8808;
+    list-style: none;
+}
+
+li {
+  list-style: none;
+  display: block;
+}
+
+ul {
+  margin: 0;
+}
+
+li b {
+  font-size: larger;
+  font-weight: 600;
+  display: inline-block;
+  margin-right: 8px;
 }
