@@ -1,54 +1,48 @@
+/* CSSのインポート */
 @import 'normalize.css';
-/* フォントのインポート */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-/* ベースのスタイル */
+/* 共通変数 */
 :root {
-  /* ナチュラルなテーマカラー */
-  --primary-color: #5D4037; /* プライマリーカラー（例：ダークブラウン） */
-  --secondary-color: #8D6E63; /* セカンダリーカラー（例：ミディアムブラウン） */
-  --background-color: #FFF; 
-  --text-color: #333333; /* テキストカラー（例：ダークグレー） */
-  --accent-color: #FFC107; /* アクセントカラー（例：ゴールド） */
-  
-  /* フォント */
+  --primary-color: #5D4037;
+  --secondary-color: #8D6E63;
+  --background-color: #FFF;
+  --text-color: #333333;
+  --accent-color: #FFC107;
   --primary-font: "Noto Sans JP", sans-serif;
+  --base-font-size: large;
+  --heading-font-size: xx-large;
+  --border-radius: 8px;
+  --text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
 }
 
-/* 背景色とテキストカラーの適用 */
+/* 基本設定 */
 body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: var(--primary-font);
-  scroll-behavior: smooth;
   margin: 0;
-  padding:0;
-  width: inherit;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
-/* プライマリーカラーの適用例 */
+/* ヘッダー設定 */
 h1, h2 {
   color: var(--text-color);
-  font-size: xx-large;
+  font-size: var(--heading-font-size);
 }
 
-/* セカンダリーカラーの適用例 */
 h3, h4 {
   color: var(--secondary-color);
 }
 
-img {
-  display: block;
-  margin-bottom: 32px;
-}
-
-/* アクセントカラーの適用例 */
+/* リンク設定 */
 a {
   color: var(--accent-color);
   text-decoration: none;
 }
 
-/* 他の要素にも適用する場合 */
+/* ボタン設定 */
 button, input[type="submit"] {
   background-color: var(--primary-color);
   color: white;
@@ -56,25 +50,34 @@ button, input[type="submit"] {
   cursor: pointer;
 }
 
+/* ユーティリティクラス */
+.flex {
+  display: flex;
+}
+
+/* セクション共通設定 */
 section {
   padding: 48px 240px;
-  & h2:first-letter {
+}
+
+section h2:first-letter {
   font-size: 2em;
   color: #ff8808;
 }
-  & h2 {
-    position: relative;
-    padding: 0.25em 0;
-  }
-  & h2:after {
-    content: "";
-    display: block;
-    height: 4px;
-    background: -webkit-linear-gradient(to right, rgb(255, 186, 115), #ffb2b2);
-    background: linear-gradient(to right, rgb(255, 186, 115), #ffb2b2);
-  }
+
+section h2 {
+  position: relative;
+  padding: 0.25em 0;
 }
 
+section h2:after {
+  content: "";
+  display: block;
+  height: 4px;
+  background: linear-gradient(to right, rgb(255, 186, 115), #ffb2b2);
+}
+
+/* メインビジュアル設定 */
 .mainVisualWrapper {
   position: relative;
   height: 100vh;
@@ -85,98 +88,58 @@ section {
   position: absolute;
   left: 80px;
   bottom: 80px;
+}
 
-  & h1,p {
-    margin: 8px;
-    color: #fff;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
-    font-size: 50px;
-    }
+.copyContainer h1, .copyContainer p {
+  margin: 8px;
+  color: #fff;
+  text-shadow: var(--text-shadow);
+  font-size: 50px;
 }
 
 .copyContainer p {
-  font-size: large;
+  font-size: var(--base-font-size);
 }
 
-.imageWrapper {
-    & img {
-        filter: brightness(50%);
-        width: 100%;
-    }
+.imageWrapper img {
+  filter: brightness(50%);
+  width: 100%;
 }
 
-
-.introduction {
+/* 他のセクション */
+.introduction, .background, .items, .tools, .benefits, .conclusion {
   margin-top: 96px;
 }
 
-.background {
+.background, .benefits, .conclusion {
   background-color: #efefef;
 }
 
-.items {
-    & img {
-    border-radius: 8px;
-  }
+.items img, .tools img, .benefits img, .conclusion img {
+  border-radius: var(--border-radius);
 }
 
-.tools {
-  & ul {
-    margin: 0;
-    & li {
-      padding-bottom: 16px;
-      font-weight: 600;
-    }
-  }
-  & img {
-    border-radius: 8px;
-  }
+.tools ul, .benefits ol {
+  margin: 0;
 }
 
-.flex {
-  display: flex;
+.tools li, .benefits li {
+  padding-bottom: 16px;
+  font-weight: 600;
 }
 
-.benefits {
-  background-color: #efefef;
-  & ol li {
-    padding: 16px 0;
-    font-size: x-large;
-    font-weight: 600;
-    & p {
-      font-size: large;
-      font-weight: 400;
-    } 
-  }
-    & img {
-    border-radius: 8px;
-  }
+.benefits ol li p {
+  font-size: var(--base-font-size);
+  font-weight: 400;
 }
 
-.conclusion {
-  background-color: #efefef;
-    & img {
-    border-radius: 4px;
-  }
-}
-
-  .flexbox img {
-    display: inline-block;
-    margin: 8px;
-  }
-
+/* リスト設定 */
 ul li {
-  font-size: large;
+  font-size: var(--base-font-size);
 }
 
-li::before {
-    content: "●";
-    padding: 0.1em 0.4em 0;
-    margin-left: -1.4em;
-    line-height: 1;
-    font-size: 1.3em;
-    color: #ff8808;
-    list-style: none;
+ul {
+  margin: 0;
 }
 
 li {
@@ -184,8 +147,13 @@ li {
   display: block;
 }
 
-ul {
-  margin: 0;
+li::before {
+  content: "●";
+  padding: 0.1em 0.4em 0;
+  margin-left: -1.4em;
+  line-height: 1;
+  font-size: 1.3em;
+  color: #ff8808;
 }
 
 li b {
@@ -195,6 +163,7 @@ li b {
   margin-right: 8px;
 }
 
+/* コピーライト */
 .copyright {
   background-color: #333333;
   text-align: center;
@@ -204,4 +173,16 @@ li b {
   align-content: center;
   justify-content: center;
   display: grid;
+}
+
+/* 画像のスペーシング設定 */
+img {
+  display: block;
+  margin-bottom: 32px;  /* 下にスペースを追加 */
+}
+
+/* 画像の横並び化 */
+.flexbox img {
+  display: inline-block;
+  margin: 8px;
 }
